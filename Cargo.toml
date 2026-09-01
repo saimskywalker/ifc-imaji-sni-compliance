@@ -1,0 +1,15 @@
+[package]
+name = "ifc-sni-check"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.75"
+license = "MIT"
+repository = "https://github.com/saimskywalker/ifc-sni-check"
+authors = ["Setyo Aji Imam Maliki <15120878+saimskywalker@users.noreply.github.com>"]
+description = "Check an openBIM IFC model against Indonesian SNI requirements and report what does not comply"
+readme = "README.md"
+keywords = ["ifc", "bim", "openbim", "sni", "compliance"]
+categories = ["science", "parsing"]
+
+[lints.rust]
+missing_docs = "warn"
