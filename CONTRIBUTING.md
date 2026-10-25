@@ -1,0 +1,75 @@
+# Contributing
+
+Contributions are welcome. A few things worth knowing before you spend time.
+
+## How changes land
+
+Every change reaches `main` through a pull request that the maintainer reviews
+and merges. That includes changes from forks, which is the normal path: you
+cannot push to this repository directly, and nothing merges without a review.
+Fork the repository, branch from the latest `main`, and open the PR against
+`main`. Keep one topic per PR. If a PR sits without a response, a nudge is
+fine.
+
+Commit messages follow the short conventional style already in the log:
+`fix: ...`, `docs: ...`, `chore: ...`, with the PR number added on merge.
+
+## Before opening a PR
+
+```bash
+cargo fmt --all -- --check
+cargo clippy --all-targets -- -D warnings
+cargo test
+cargo doc --no-deps
+```
+
+CI runs exactly these four on `ubuntu-latest` with the stable toolchain.
+Warnings are denied, and that includes `missing_docs`: a new public item
+without a doc comment fails the build.
+
+## AI-assisted contributions
+
+Using AI tools is fine; please just be open about it.
+
+- Say in the PR description which AI tools you used, if any: none, some or most, plus the tool or agent and the model (for example "Claude Code, Opus 5.5" or "Copilot, GPT-5").
+- Write the PR description and any issues yourself, in your own words. Short, plain descriptions are welcome; please don't paste generated text.
+- Read, run and test every line you submit, and be ready to explain it in review.
+- PRs without the disclosure may be closed.
+
+## What a good change looks like
+
+A test that shows the behaviour, built from literal inputs. For a new rule:
+one element that passes, one that fails, and one that lacks the property the
+rule needs and so reports `NotEvaluated`. A rule proposal is much more useful
+with a real example of a model element that should fail it.
+
+For a bug fix, the test fails without the fix.
+
+## Things to be careful with
+
+**`NotEvaluated` is never a pass.** If a rule cannot read what it needs, it
+reports `Outcome::NotEvaluated` with a reason. No path may produce `Pass`
+without having checked the element. This is the rule the crate is built
+around, and a change that blurs it will not be merged.
+
+**Cite the clause.** Every rule carries the SNI standard, edition and clause
+it comes from in `Finding::clause`. If you cannot confirm a limit, do not
+guess one: leave it as an input and say so in the PR.
+
+**Do not reproduce the standard.** SNI documents are copyrighted by BSN. A
+value an engineer reads from a table (exposure class, environment category)
+is an input, not an embedded copy.
+
+**Do not reimplement capacities.** Where a rule needs a structural capacity,
+call [imaji-structural-design](https://github.com/saimskywalker/sni-imaji-structural-design)
+so each requirement is encoded once.
+
+**Untrusted input.** IFC files come from other people. Parsing must not panic,
+loop forever, or allocate without bound on malformed input.
+
+## Scope
+
+Reading an IFC model and reporting which SNI requirements it does not meet.
+Structural arithmetic and irrigation hydraulics live in the sibling crates.
+The crate has no dependencies yet, and a PR that adds one needs a strong
+reason.
