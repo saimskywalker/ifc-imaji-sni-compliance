@@ -61,7 +61,7 @@ value an engineer reads from a table (exposure class, environment category)
 is an input, not an embedded copy.
 
 **Do not reimplement capacities.** Where a rule needs a structural capacity,
-call [imaji-structural-design](https://github.com/saimskywalker/sni-imaji-structural-design)
+call [imaji-structural-sni](https://github.com/saimskywalker/imaji-structural-sni)
 so each requirement is encoded once.
 
 **Untrusted input.** IFC files come from other people. Parsing must not panic,

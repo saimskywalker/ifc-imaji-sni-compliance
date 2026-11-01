@@ -1,4 +1,4 @@
-# imaji-sni-compliance — Rust crate for checking openBIM IFC models against Indonesian SNI requirements
+# imaji-bim — Rust crate for checking openBIM IFC models against Indonesian SNI requirements
 
 Check an openBIM IFC model against Indonesian SNI requirements, and report
 what does not comply.
@@ -53,13 +53,13 @@ clause is the authority; this crate is a way of applying it consistently.
 
 ## Relationship to the other crates
 
-- [imaji-structural-design](https://github.com/saimskywalker/sni-imaji-structural-design)
+- [imaji-structural-sni](https://github.com/saimskywalker/imaji-structural-sni)
   does the structural arithmetic: capacities, load combinations, limit states
-- [imaji-kp-hydraulics](https://github.com/saimskywalker/irigasi-imaji-kp-hydraulics)
+- [imaji-tirta](https://github.com/saimskywalker/imaji-tirta)
   does irrigation hydraulics
 
 This crate is the third piece: reading a model and deciding which questions to
-ask of it. Where a rule needs a capacity, it should call `imaji-structural-design`
+ask of it. Where a rule needs a capacity, it should call `imaji-structural-sni`
 rather than reimplement the check, so a requirement is only ever encoded once.
 
 ## Standards and copyright
