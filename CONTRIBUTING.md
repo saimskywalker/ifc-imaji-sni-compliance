@@ -73,3 +73,8 @@ Reading an IFC model and reporting which SNI requirements it does not meet.
 Structural arithmetic and irrigation hydraulics live in the sibling crates.
 The crate has no dependencies yet, and a PR that adds one needs a strong
 reason.
+
+## Stay in touch
+
+Don't forget to follow [@saimskywalker](https://github.com/saimskywalker) on
+GitHub to see new releases and other open-source projects as they come out.
